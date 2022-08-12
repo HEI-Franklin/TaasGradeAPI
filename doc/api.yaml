@@ -1,0 +1,693 @@
+
+openapi: 3.0.1
+info:
+  title: taas-grade-api
+  version: 1.0.0
+servers:
+  - url: "#"
+paths:
+  /candidates:
+    get:
+      tags:
+        - "Candidates"
+      summary: Get all candidate
+      description: Get all candidate for the entrance exam
+      operationId: getAllCandidates
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Candidates'
+        400:
+          description: Error
+    post: 
+      tags:
+        - "Candidates"
+      summary: Create a new candidate             
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewCandidates'
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: "#/components/schemas/Candidates"
+        400:
+          description: Error
+    delete: 
+      tags:
+        - "Candidates"   
+      summary: Delete all candidate
+      responses:
+          200:
+            description: Successful deletion
+          400: 
+            description: Error             
+  /candidates/{id_candidate}:
+    get:
+      tags:
+        - "Candidates"
+      summary: Get candidate with specified id
+      parameters:
+        - name: id_candidate 
+          in: path 
+          schema:
+            type: integer
+          required: true
+      description: Get candidate with specified id for the entrance exam
+      operationId: getIdCandidates
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Candidates'
+        400:
+          description: Error
+    patch: 
+      tags:
+        - "Candidates"
+      summary: Modify the candidate parameter
+      parameters:
+        - name: id_candidate 
+          in: path 
+          schema:
+            type: integer
+          required: true
+      description: |
+        Possible changes on:
+        * first name: change first name
+        * last name: change last name
+      requestBody:
+        content:
+          application/json:
+            schema: 
+              type: array
+              items:
+                $ref: '#/components/schemas/Candidates'
+            examples:
+              changeFirstName:
+                summary: Change first name
+                value:
+                - first_name:
+              changeLastName:
+                summary: Change last name  
+                value:
+                - last_name:
+      responses:
+        200: 
+          description: Candidate edited
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: '#/components/schemas/Candidates'
+        400: 
+          description: Error          
+    put:
+      tags:
+        - "Candidates"   
+      summary: Allows you to modify category data except its id
+      parameters:
+        - name: id_candidate 
+          in: path 
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        description: Update candidate
+        content:
+          application/json:
+            schema: 
+              type: array
+              items:
+                $ref: '#/components/schemas/NewCandidates'
+      responses:
+        200: 
+          description: Success
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: '#/components/schemas/Candidates' 
+        400:
+          description: Error                       
+    delete: 
+      tags:
+        - "Candidates"   
+      summary: Delete candidate with specified id 
+      parameters:
+        - name: id_candidate 
+          in: path 
+          schema:
+            type: integer
+          required: true
+      responses:
+          200:
+            description: Successful deletion
+            content:
+              text/plain:
+                schema: 
+                  type: string
+          400: 
+            description: Error
+  /grades:
+    get:
+      tags:
+        - "Grades"
+      summary: Get all grades 
+      description: Get all grades for the entrance exam
+      operationId: getAllGrades
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: '#/components/schemas/Grades' 
+    post: 
+      tags:
+        - "Grades"
+      summary: Add a new grades            
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewGrades'
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: "#/components/schemas/Grades"
+        400:
+          description: Error 
+    delete: 
+      tags:
+        - "Grades"   
+      summary: Delete all grades
+      responses:
+          200:
+            description: Successful deletion
+          400: 
+            description: Error      
+  /grades/{id_grade}:
+    get: 
+      tags:
+        - "Grades"
+      summary: Get grade with specified id
+      parameters:
+        - name: id_grade 
+          in: path 
+          schema:
+            type: integer
+          required: true
+      description: Get grade with specified id
+      operationId: getIdGrades
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Grades'
+        400:
+          description: Error
+    put:
+      tags:
+        - "Grades"
+      summary: Allows you to modify category data except its id
+      parameters:
+        - name: id_grade 
+          in: path 
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        description: Update grade
+        content:
+          application/json:
+            schema: 
+              type: array
+              items:
+                $ref: '#/components/schemas/NewGrades'
+      responses:
+        200: 
+          description: Success
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: '#/components/schemas/Grades' 
+        400:
+          description: Error  
+    delete: 
+      tags:
+        - "Grades"   
+      summary: Delete grade with specified id 
+      parameters:
+        - name: id_grade 
+          in: path
+          schema:
+            type: integer
+          required: true
+      responses:
+          200:
+            description: Successful deletion
+            content:
+              text/plain:
+                schema: 
+                  type: string
+          400: 
+            description: Error
+    patch: 
+      tags:
+        - "Grades"
+      summary: Modify the grade parameter
+      parameters:
+        - name: id_grade 
+          in: path 
+          schema:
+            type: integer
+          required: true
+      description: |
+        Possible changes on:
+        * candidate: change candidate
+        * math: change math grade
+        * french: change french grade
+      requestBody:
+        content:
+          application/json:
+            schema: 
+              type: array
+              items:
+                $ref: '#/components/schemas/NewGrades'
+            examples:
+              changeCandidate:
+                summary: Change candidate
+                value:
+                - first_name:
+                  last_name:
+              changeMath:
+                summary: change math grade
+                value:
+                - grade_bacc:
+                  grade_competition:   
+              changeFrench:
+                summary: change french grade
+                value:
+                - grade_bacc:
+                  grade_competition:     
+      responses:
+        200: 
+          description: Candidate edited
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: '#/components/schemas/Grades'
+        400: 
+          description: Error 
+  /math:
+    get:
+      tags:
+        - "Math"
+      summary: Get all grade math
+      operationId: getAllMath
+      description:  Get  all grade math
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Math'
+        400:
+          description: Error
+    post: 
+      tags:
+        - "Math"
+      summary: Create a new candidate             
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewMath'
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: "#/components/schemas/Math"
+        400:
+          description: Error 
+    delete: 
+      tags:
+        - "Math"   
+      summary: Delete all math
+      responses:
+          200:
+            description: Successful deletion
+          400: 
+            description: Error  
+  /math/{id_math}:
+    put:
+      tags:
+        - "Math"   
+      summary: Allows you to modify category data except its id
+      parameters:
+        - name: id_math 
+          in: path 
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        description: Update grade of math
+        content:
+          application/json:
+            schema: 
+              type: array
+              items:
+                $ref: '#/components/schemas/NewMath'
+      responses:
+        200: 
+          description: Success
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: '#/components/schemas/Math' 
+        400:
+          description: Error
+    patch: 
+      tags:
+        - "Math"
+      summary: Modify the grade of math parameter
+      parameters:
+        - name: id_math 
+          in: path 
+          schema:
+            type: integer
+          required: true
+      description: |
+        Possible changes on:
+        * grade of bacc: change grade of bacc
+        * grade of competition: change grade of competition
+      requestBody:
+        content:
+          application/json:
+            schema: 
+              type: array
+              items:
+                $ref: '#/components/schemas/NewGrades'
+            examples:
+              changeGradeBacc:
+                summary: Change grade of bacc
+                value:
+                - grade_bacc:
+              changeGradeCompetition:
+                summary: change grade of competition
+                value:
+                - grade_competition:    
+      responses:
+        200: 
+          description: Grade of math edited
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: '#/components/schemas/Math'
+        400: 
+          description: Error      
+    delete: 
+      tags:
+        - "Math"   
+      summary: Delete grade math with specified id 
+      parameters:
+        - name: id_math 
+          in: path 
+          schema:
+            type: integer
+          required: true
+      responses:
+          200:
+            description: Successful deletion
+            content:
+              text/plain:
+                schema: 
+                  type: string
+          400: 
+            description: Error 
+  /french:
+    get:
+      tags:
+        - "French"
+      summary: Get all grade french
+      operationId: getAllFrench
+      description:  Get  all grade french
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/French'
+        400:
+          description: Error
+    post: 
+      tags:
+        - "French"
+      summary: Create a new grade of french            
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewFrench'
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: "#/components/schemas/French"
+        400:
+          description: Error 
+    delete: 
+      tags:
+        - "French"   
+      summary: Delete all french
+      responses:
+          200:
+            description: Successful deletion
+          400: 
+            description: Error  
+  /french/{id_french}:
+    put:
+      tags:
+        - "French"   
+      summary: Allows you to modify category data except its id
+      parameters:
+        - name: id_french 
+          in: path 
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        description: Update grade of french
+        content:
+          application/json:
+            schema: 
+              type: array
+              items:
+                $ref: '#/components/schemas/NewFrench'
+      responses:
+        200: 
+          description: Success
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: '#/components/schemas/French' 
+        400:
+          description: Error
+    patch: 
+      tags:
+        - "French"
+      summary: Modify the grade of french parameter
+      parameters:
+        - name: id_french 
+          in: path 
+          schema:
+            type: integer
+          required: true
+      description: |
+        Possible changes on:
+        * grade of bacc: change grade of bacc
+        * grade of competition: change grade of competition
+      requestBody:
+        content:
+          application/json:
+            schema: 
+              type: array
+              items:
+                $ref: '#/components/schemas/NewGrades'
+            examples:
+              changeGradeBacc:
+                summary: Change grade of bacc
+                value:
+                - grade_bacc:
+              changeGradeCompetition:
+                summary: change grade of competition
+                value:
+                - grade_competition:    
+      responses:
+        200: 
+          description: Grade of french edited
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: '#/components/schemas/French'
+        400: 
+          description: Error      
+    delete: 
+      tags:
+        - "French"   
+      summary: Delete grade french with specified id 
+      parameters:
+        - name: id_french
+          in: path 
+          schema:
+            type: integer
+          required: true
+      responses:
+          200:
+            description: Successful deletion
+            content:
+              text/plain:
+                schema: 
+                  type: string
+          400: 
+            description: Error           
+components:
+  schemas:
+    Candidates:
+      type: object
+      properties:
+        id_candidate:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string  
+    NewCandidates:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+    NewGrades:
+      type: object
+      properties:
+        id_candidate:
+          type: integer
+        id_math: 
+          type: integer
+        id_french:
+          type: integer        
+    Grades: 
+      type: object
+      properties:
+        id_grade:
+          type: string
+        candidates: 
+          type: object
+          properties:
+            first_name:
+              type: string
+            last_name:
+              type: string  
+        math: 
+          type: object
+          properties:
+            grade_bacc:
+              type: string
+            grade_competition:
+              type: string 
+        french: 
+          type: object
+          properties:
+            grade_bacc:
+              type: string
+            grade_competition:
+              type: string 
+    Math: 
+          type: object
+          properties:
+            id_math: 
+              type: string
+            grade_bacc:
+              type: string
+            grade_competition:
+              type: string 
+    NewMath: 
+          type: object
+          properties:
+            grade_bacc:
+              type: string
+            grade_competition:
+              type: string                  
+    French: 
+          type: object
+          properties:
+            id_french: 
+              type: string
+            grade_bacc:
+              type: string
+            grade_competition:
+              type: string                     
+    NewFrench: 
+          type: object
+          properties:
+            grade_bacc:
+              type: string
+            grade_competition:
+              type: string
