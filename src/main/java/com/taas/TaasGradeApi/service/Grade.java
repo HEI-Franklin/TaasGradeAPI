@@ -11,5 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Grade {
     private float total;
-    private boolean passed;
+    private String passed;
 }
