@@ -2,7 +2,7 @@
   <div align="center">
     <h1>Team as a service</h1>
     <a >
-    <img src="https://github.com/YumeT023/taas-grade-ui/raw/dev/src/image/TAAS.png" alt="logo" width="200" >
+    <img src="https://github.com/HEI-Franklin/TaasGradeAPI/raw/dev/doc/image/TAAS.png" alt="logo" width="200" >
     </a>
     
   </div>
@@ -15,7 +15,7 @@
 ## TaasGradeAPI Data Base model
 Here is the schema model of the database
 
-SCHEMA
+  <img src="https://github.com/HEI-Franklin/TaasGradeAPI/raw/dev/doc/image/data_model.jpg" alt="Data model">
 
 ## Prerequisites to deploy this app
 - Operating system like Windows Linux or Mac
