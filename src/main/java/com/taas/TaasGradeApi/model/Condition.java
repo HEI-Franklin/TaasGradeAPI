@@ -16,6 +16,7 @@ import javax.persistence.*;
 public class Condition {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
+        private long id_condition;
         private float admission;
         private float minMath;
         private float waiting;
