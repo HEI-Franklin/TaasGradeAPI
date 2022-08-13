@@ -158,11 +158,11 @@ paths:
                   type: string
           400: 
             description: Error
-  /allGrade:
+  /Allinfoabout:
     get:
       tags:
         - "Grades"
-      summary: Get all grades 
+      summary: Get all info about 
       description: Get all grades for the entrance exam
       operationId: getAllGrades
       responses:
