@@ -3,6 +3,7 @@ package com.taas.TaasGradeApi.controller;
 import com.taas.TaasGradeApi.exceptions.CandidateExceptions;
 import com.taas.TaasGradeApi.model.Candidate;
 import com.taas.TaasGradeApi.repository.CandidateRepository;
+import com.taas.TaasGradeApi.service.Candidateservice;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,23 +15,25 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CandidateController {
 
+  @Autowired
+    private final Candidateservice candidateservice ;
+
     @Autowired
-    private final CandidateRepository Candidate_Repository;
+    private  final CandidateRepository Candidate_Repository;
 
-
-    @GetMapping("/1")
+    @GetMapping("/")
     public String hello(){
         return "Hello wolrd";
     }
 
     @GetMapping("/all")
     public List<Candidate> getAll(){
-        return this.Candidate_Repository.findAll();
+        return this.candidateservice.getAll();
     }
 
     @GetMapping("/all/{id}")
     public Candidate getCandidateById(@PathVariable(value = "id") Long id){
-        return this.Candidate_Repository.findById(id).orElseThrow(()-> new CandidateExceptions("Candidate not submited"));
+        return this.candidateservice.getCandidateById(id);
     }
 
     @PostMapping("/NewCandidate")
