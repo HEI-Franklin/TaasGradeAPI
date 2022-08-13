@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 
-    @AllArgsConstructor
-    @Service
+@AllArgsConstructor
+@Service
 public class Candidateservice {
         @Autowired
         private final CandidateRepository candidateRepository;
@@ -46,10 +46,5 @@ public class Candidateservice {
             this.candidateRepository.delete(ToReject);
             return ResponseEntity.ok().build();
         }
-
-
-
-
-
     }
 
