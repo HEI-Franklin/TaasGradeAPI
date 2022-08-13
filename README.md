@@ -37,6 +37,10 @@ For Linux or Mac
 
  Now your application is available on localhost:8080
 
+## Documentation
+
+<a href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/HEI-Franklin/TaasGradeAPI/dev/doc/TaasGradeAPISwagger.yml">Clic Here to view API documentation in swagger petstore</a>
+
 ## Requests
 If you have any suggestions for improvement, bugs or anything you don't understand, please contact me at the following address. <a href= "mailto:hei.franklin.2@gmail.com">Franklin Hyriol</a>
 
